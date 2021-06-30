@@ -17,23 +17,26 @@ const CartItem = ({ item, variantId }) => {
   }
 
   return (
-    <article key={item.variant.id} className='px-4 flex gap-2 my-10'>
+    <article key={item.variant.id} className='px-4 flex gap-4 my-10'>
       <section>
         <Image
-          width='100px'
-          height='100px'
+          width='120px'
+          height='120px'
           src={item.variant.image.src}
           alt={item.variant.image.altText}
+          className='rounded-md'
         />
       </section>
       <section>
-        <p className='font-bold text-xl text-gray-600'>
+        <p className='text-lg tracking-tight text-gray-500'>
           {item.title} - {item.variant.title}
         </p>
-        <p className='text-gray-400'>${item.variant.price}</p>
+        <p className='text-gray-600 font-bold tracking-tight'>
+          ${item.variant.price}
+        </p>
         <div className='space-y-3'>
           <input
-            className='w-1/3 px-4 py-2 border border-gray-300 cursor-pointer shadow-md'
+            className='w-1/3 p-2 border border-primary-600 cursor-pointer shadow-md rounded-md'
             type='number'
             min='1'
             value={quantity}

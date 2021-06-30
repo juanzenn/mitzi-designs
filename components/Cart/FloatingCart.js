@@ -30,11 +30,10 @@ const FloatingCart = () => {
         className={
           cartState
             ? 'hidden'
-            : 'fixed top-4 right-4 z-50 py-2 px-4 border border-gray-200 bg-gray-100 flex gap-2 hover:bg-gray-50 transition-all duration-300 shadow-lg rounded-md'
+            : 'fixed top-4 right-4 z-50 p-2 border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all duration-300 shadow-lg rounded-sm'
         }
         onClick={openCart}>
         <ShoppingBag />
-        <span>Mi carrito</span>
       </button>
       <Motion style={{ x: spring(cartState ? 0.5 : 0) }}>
         {({ x }) => (
@@ -56,7 +55,7 @@ const FloatingCart = () => {
                 right: 0,
                 transform: `translateX(${x}%)`,
               }}
-              className={`fixed top-0 z-40 w-full lg:w-1/3 h-screen bg-white py-16 border-l border-gray-400 shadow-xl overflow-y-scroll`}>
+              className={`fixed top-0 z-40 w-full lg:w-1/3 h-screen bg-white-accent py-16 lg:border-l lg:border-gray-400 lg:shadow-xl overflow-y-scroll`}>
               {/* Button */}
               <button className='fixed top-4 right-4 z-50' onClick={closeCart}>
                 <Cross size={20} />
@@ -73,14 +72,14 @@ const FloatingCart = () => {
               )}
               <section className='px-4 my-6 flex gap-4 items-center '>
                 <p className='text-gray-500 text-xl'>
-                  <strong>Subtotal:</strong> {checkout.subtotalPrice}
+                  <strong>Subtotal:</strong> ${checkout.subtotalPrice}
                 </p>
                 <Button
                   className='p-0'
                   onClick={() => localStorage.removeItem('checkout')}>
                   <a
                     href={checkout.webUrl}
-                    className='px-4 py-2 bg-black text-white shadow-lg rounded-md border-2 border-black hover:border-gray-900 hover:bg-gray-900 tracking-tight transition-all duration-300'>
+                    className='bg-primary-500 text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600 px-4 py-2 tracking-tight transition-all duration-300 shadow-lg rounded-md'>
                     Comprar
                   </a>
                 </Button>

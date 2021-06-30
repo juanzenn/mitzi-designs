@@ -29,12 +29,10 @@ export default function index(props) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <section className='w-screen h-screen flex flex-col'>
-        <section className='container mx-auto px-4 py-16 mb-10'>
-          <h1 className='font-bold text-6xl lg:text-7xl text-center'>
-            Mitzi Designs
-          </h1>
-        </section>
+      <section className='w-screen space-y-16 pb-24'>
+        <div className='w-screen h-96'>
+          <section className='w-full h-full bg-primary-600'></section>
+        </div>
 
         <section className='container mx-auto'>
           <Products />

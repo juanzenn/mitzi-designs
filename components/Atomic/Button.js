@@ -1,14 +1,14 @@
 const Button = props => {
-  const { outlined = false, children, ...rest } = props
+  const { outlined = false, children, className, ...rest } = props
 
   const outlinedVersion = () => {
     switch (outlined) {
       case true:
-        return `text-black border-2 border-black hover:bg-black hover:text-white`
+        return `text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white`
       case false:
-        return `bg-black text-white border-2 border-black hover:border-gray-900 hover:bg-gray-900`
+        return `bg-primary-500 text-white text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600`
       case 'default':
-        return `bg-black text-white border-2 border-black hover:border-gray-900 hover:bg-gray-900`
+        return `bg-primary-500 text-white text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600`
     }
   }
 
@@ -16,7 +16,7 @@ const Button = props => {
 
   return (
     <button
-      className={`px-4 py-2 tracking-tight transition-all duration-300 shadow-lg rounded-md ${outline}`}
+      className={`px-4 py-2 tracking-tight transition-all duration-300 shadow-lg rounded-md ${outline} ${className}`}
       {...rest}>
       {children}
     </button>
