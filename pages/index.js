@@ -1,26 +1,26 @@
 import AllProducts from '../components/AllProducts'
 import Head from 'next/head'
-import { useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { ShopifyContext } from '../context/ShopifyContext'
+import CollectionNavbar from '../components/CollectionNavbar'
 
-export default function index(props) {
-  const { fetchAllProducts, products } = useContext(ShopifyContext)
+export default function index() {
+  const { fetchAllProducts, products, fetchCollections, collections } =
+    useContext(ShopifyContext)
 
   useEffect(() => {
     fetchAllProducts()
+    fetchCollections()
   }, [])
 
-  const Loading = () => {
-    return <div>Loading...</div>
+  const [selectedCollection, setSelectedCollection] = useState(0)
+
+  const handleCollectionSelection = event => {
+    setSelectedCollection(event.target.dataset.index)
   }
 
-  const Products = () => {
-    if (products.length == 0) {
-      return <Loading />
-    } else {
-      return <AllProducts products={products} />
-    }
-  }
+  if (!products) return <div></div>
+  if (!collections) return <div></div>
 
   return (
     <>
@@ -29,14 +29,27 @@ export default function index(props) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <section className='w-screen space-y-16 pb-24'>
-        <div className='w-screen h-96'>
+      <section className='w-screen pb-24'>
+        <div className='w-screen' style={{ height: '70vh' }}>
           <section className='w-full h-full bg-primary-600'></section>
         </div>
 
-        <section className='container mx-auto'>
-          <Products />
-        </section>
+        {/*  Navbar for collection navigation */}
+
+        <CollectionNavbar
+          collections={collections}
+          handleCollectionSelection={handleCollectionSelection}
+        />
+
+        {/* Products display */}
+
+        <AllProducts
+          products={
+            selectedCollection == 0
+              ? products
+              : collections[selectedCollection].products
+          }
+        />
       </section>
     </>
   )

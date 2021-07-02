@@ -22,7 +22,7 @@ const FloatingCart = () => {
     setCartState(false)
   }
 
-  if (!checkout) return 'Loading...'
+  if (!checkout) return <div></div>
 
   return (
     <>

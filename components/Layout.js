@@ -1,4 +1,5 @@
 import FloatingCart from './Cart/FloatingCart'
+import Footer from './Footer'
 import { useContext, useEffect } from 'react'
 
 import { ShopifyContext } from '../context/ShopifyContext'
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
     <>
       <FloatingCart />
       <main>{children}</main>
+      <Footer />
     </>
   )
 }

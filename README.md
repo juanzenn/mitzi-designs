@@ -1,11 +1,5 @@
-# Headless eCommerce with Shopify and Next.js
-A template for your Next.js and Shopify ecommerce site, styled with Tailwind.
+# Mitzi Designs eCommerce Store
 
-This repo includes: 
-* Index page with all products
-* Single product page
-* Fully functional cart
-* Delete and upgrade cart items 
+This app is to leverage the power of Shopify SDK and make a fully functional, complete and clean store with Next.js.
 
-## Usage
-1. 
+This is a custom store.

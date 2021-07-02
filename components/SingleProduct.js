@@ -82,7 +82,7 @@ export default function SingleProduct({ productId }) {
     setSelectedImage(url)
   }
 
-  if (!product.title) return 'Loading...'
+  if (!product.title) return <div></div>
 
   const backgroundUrl =
     selectedImage == '' ? product.images[0].src : selectedImage
@@ -103,15 +103,15 @@ export default function SingleProduct({ productId }) {
         </section>
 
         <article className='container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center gap-6 '>
-          <section className='w-full h-full grid justify-items-center p-4 gap-4'>
-            <div>
+          <section className='w-full grid justify-items-center'>
+            <div className='my-6'>
               <figure
-                className='w-72 h-72 bg-center bg-cover bg-no-repeat shadow-lg rounded-sm'
+                className='w-96 h-96 bg-center bg-cover bg-no-repeat shadow-lg rounded-sm'
                 style={{
                   backgroundImage: 'url(' + backgroundUrl + ')',
                 }}></figure>
             </div>
-            <div className='grid grid-cols-4 gap-2 '>
+            <div className='w-1/2 grid grid-cols-4 gap-2 justify-items-start '>
               {product.images.map((image, index) => (
                 <Image
                   key={index}
