@@ -1,26 +1,26 @@
-import AllProducts from '../components/AllProducts'
-import Head from 'next/head'
-import { useState, useEffect, useContext } from 'react'
-import { ShopifyContext } from '../context/ShopifyContext'
-import CollectionNavbar from '../components/CollectionNavbar'
+import AllProducts from '../components/AllProducts';
+import Head from 'next/head';
+import { useState, useEffect, useContext } from 'react';
+import { ShopifyContext } from '../context/ShopifyContext';
+import CollectionNavbar from '../components/CollectionNavbar';
 
 export default function index() {
   const { fetchAllProducts, products, fetchCollections, collections } =
-    useContext(ShopifyContext)
+    useContext(ShopifyContext);
 
   useEffect(() => {
-    fetchAllProducts()
-    fetchCollections()
-  }, [])
+    fetchAllProducts();
+    fetchCollections();
+  }, []);
 
-  const [selectedCollection, setSelectedCollection] = useState(0)
+  const [selectedCollection, setSelectedCollection] = useState(0);
 
   const handleCollectionSelection = event => {
-    setSelectedCollection(event.target.dataset.index)
-  }
+    setSelectedCollection(event.target.dataset.index);
+  };
 
-  if (!products) return <div></div>
-  if (!collections) return <div></div>
+  if (!products) return <div></div>;
+  if (!collections) return <div></div>;
 
   return (
     <>
@@ -31,7 +31,9 @@ export default function index() {
 
       <section className='w-screen pb-24'>
         <div className='w-screen' style={{ height: '70vh' }}>
-          <section className='w-full h-full bg-primary-600'></section>
+          <section
+            className='w-full h-full bg-cover bg-no-repeat bg-center'
+            style={{ backgroundImage: `url(/header.jpg)` }}></section>
         </div>
 
         {/*  Navbar for collection navigation */}
@@ -52,5 +54,5 @@ export default function index() {
         />
       </section>
     </>
-  )
+  );
 }

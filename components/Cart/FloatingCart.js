@@ -1,28 +1,28 @@
-import { useContext, useState } from 'react'
-import { ShopifyContext } from '../../context/ShopifyContext'
-import { Motion, spring } from 'react-motion'
-import { ShoppingBag, Cross } from 'akar-icons'
-import CartItem from './CartItem'
-import Button from '../Atomic/Button'
+import { useContext, useState } from 'react';
+import { ShopifyContext } from '../../context/ShopifyContext';
+import { Motion, spring } from 'react-motion';
+import { ShoppingBag, Cross } from 'akar-icons';
+import CartItem from './CartItem';
+import Button from '../Atomic/Button';
 
 const CartItems = ({ checkout }) => {
   return checkout.lineItems.map(item => (
     <CartItem item={item} variantId={item.id} />
-  ))
-}
+  ));
+};
 
 const FloatingCart = () => {
-  const { checkout, cartState, setCartState } = useContext(ShopifyContext)
+  const { checkout, cartState, setCartState } = useContext(ShopifyContext);
 
   const openCart = () => {
-    setCartState(true)
-  }
+    setCartState(true);
+  };
 
   const closeCart = () => {
-    setCartState(false)
-  }
+    setCartState(false);
+  };
 
-  if (!checkout) return <div></div>
+  if (!checkout) return <div></div>;
 
   return (
     <>
@@ -61,35 +61,36 @@ const FloatingCart = () => {
                 <Cross size={20} />
               </button>
               {/* Cart content */}
-              <h3 className='font-bold text-4xl px-4'>Carrito</h3>
+              <h3 className='font-semibold tracking-tight text-4xl px-4 text-red-700'>
+                Carrito
+              </h3>
               {/* <CartItems /> */}
               {checkout.lineItems.length < 1 ? (
-                <p className='px-4 my-4 text-xl font-bold text-gray-700'>
+                <p className='px-4 my-8 text-gray-400'>
                   No hay objetos en el carrito...
                 </p>
               ) : (
                 <CartItems checkout={checkout} />
               )}
               <section className='px-4 my-6 flex gap-4 items-center '>
-                <p className='text-gray-500 text-xl'>
-                  <strong>Subtotal:</strong> ${checkout.subtotalPrice}
+                <p className='text-gray-600 text-xl'>
+                  Subtotal: ${checkout.subtotalPrice}
                 </p>
-                <Button
+
+                <a
                   className='p-0'
-                  onClick={() => localStorage.removeItem('checkout')}>
-                  <a
-                    href={checkout.webUrl}
-                    className='bg-primary-500 text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600 px-4 py-2 tracking-tight transition-all duration-300 shadow-lg rounded-md'>
-                    Comprar
-                  </a>
-                </Button>
+                  onClick={() => localStorage.removeItem('checkout')}
+                  href={checkout.webUrl}
+                  className='bg-primary-500 text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600 px-4 py-2 tracking-tight transition-all duration-300 shadow-lg rounded-md'>
+                  Comprar
+                </a>
               </section>
             </section>
           </>
         )}
       </Motion>
     </>
-  )
-}
+  );
+};
 
-export default FloatingCart
+export default FloatingCart;

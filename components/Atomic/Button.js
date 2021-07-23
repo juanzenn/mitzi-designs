@@ -1,18 +1,18 @@
 const Button = props => {
-  const { outlined = false, children, className, ...rest } = props
+  const { outlined = false, children, className, ...rest } = props;
 
   const outlinedVersion = () => {
     switch (outlined) {
       case true:
-        return `text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white`
+        return `text-primary-500 border-2 border-primary-500 hover:bg-primary-500 hover:text-white`;
       case false:
-        return `bg-primary-500 text-white text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600`
+        return `bg-primary-500 text-white text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600`;
       case 'default':
-        return `bg-primary-500 text-white text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600`
+        return `bg-primary-500 text-white text-white border-2 border-primary-500 hover:border-primary-600 hover:bg-primary-600`;
     }
-  }
+  };
 
-  const outline = outlinedVersion()
+  const outline = outlinedVersion();
 
   return (
     <button
@@ -20,7 +20,7 @@ const Button = props => {
       {...rest}>
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
